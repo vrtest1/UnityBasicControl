@@ -3,15 +3,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction jumpAction;
 
     private void Awake()
     {
-        playerInput = new PlayerInput();
-        moveAction = playerInput.Player.Move;
-        jumpAction = playerInput.Player.Jump;
+        // PlayerInput コンポーネントから直接アクションを取得
+        moveAction = playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
     }
 
     private void OnEnable()
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (jumpAction.triggered)
         {
             // ジャンプ処理
+            Debug.Log("jump");
         }
 
         // 移動処理
