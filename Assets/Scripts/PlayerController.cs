@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5f;
 
+    [SerializeField]
+    private float rotationSpeed = 100f; // 回転速度
+
     private void Update()
     {
         Vector2 move = moveAction.ReadValue<Vector2>();
@@ -43,8 +46,14 @@ public class PlayerController : MonoBehaviour
 
         if (jumpAction.triggered)
         {
-            // ジャンプ処理
             Debug.Log("jump");
         }
+
+        // マウスの入力を取得して回転を適用
+        float mouseX = Mouse.current.delta.x.ReadValue();
+        float mouseY = Mouse.current.delta.y.ReadValue();
+
+        Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * rotationSpeed * Time.deltaTime;
+        transform.Rotate(rotation, Space.Self);
     }
 }
