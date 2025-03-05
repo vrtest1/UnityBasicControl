@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 5f;
 
     [SerializeField]
-    private float rotationSpeed = 100f; // 回転速度
+    private float rotationSpeed = 30f; // 回転速度
 
     private void Update()
     {
