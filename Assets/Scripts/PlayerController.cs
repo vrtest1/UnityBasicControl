@@ -51,10 +51,15 @@ public class PlayerController : MonoBehaviour
 
         // マウスの入力を取得して回転を適用
         float mouseX = Mouse.current.delta.x.ReadValue();
-
         float mouseY = Mouse.current.delta.y.ReadValue();
 
         Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * rotationSpeed * Time.deltaTime;
-        transform.Rotate(rotation, Space.Self);
+        //transform.Rotate(rotation, Space.Self);
+        // X軸回転（縦方向）
+        transform.Rotate(Vector3.right, -mouseY * rotationSpeed * Time.deltaTime, Space.Self);
+
+        // Y軸回転（横方向）
+        transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime, Space.World);
+
     }
 }
