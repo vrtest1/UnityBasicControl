@@ -27,15 +27,19 @@ public class PlayerController : MonoBehaviour
         jumpAction.Disable();
     }
 
+    [SerializeField]
+    private float moveSpeed = 5f;
+
     private void Update()
     {
         Vector2 move = moveAction.ReadValue<Vector2>();
+        Vector3 movement = new Vector3(move.x, 0, move.y) * moveSpeed * Time.deltaTime;
+        transform.Translate(movement, Space.World);
+
         if (jumpAction.triggered)
         {
             // ジャンプ処理
             Debug.Log("jump");
         }
-
-        // 移動処理
     }
 }
