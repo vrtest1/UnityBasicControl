@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 450866741}
   moveSpeed: 5
+  rotationSpeed: 30
 --- !u!114 &450866741
 MonoBehaviour:
   m_ObjectHideFlags: 0
